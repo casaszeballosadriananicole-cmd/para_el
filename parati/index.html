@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Para ti 💖</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            margin-top: 80px;
+            color: white;
+            font-size: 40px;
+            animation: aparecer 2s ease-in-out;
+        }
+
+        p {
+            color: white;
+            font-size: 20px;
+            width: 60%;
+            margin: auto;
+            opacity: 0;
+            animation: aparecer 3s forwards;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            background-color: #ff3366;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff0033;
+            transform: scale(1.1);
+        }
+
+        .mensaje {
+            margin-top: 20px;
+            font-size: 22px;
+            color: white;
+            display: none;
+        }
+
+        .corazon {
+            position: absolute;
+            color: red;
+            font-size: 20px;
+            animation: flotar 5s linear infinite;
+        }
+
+        @keyframes flotar {
+            0% {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 28px;
+                margin-top: 60px;
+            }
+
+            p {
+                font-size: 16px;
+                width: 85%;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            .mensaje {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Para ti 💖</h1>
+
+    <p>
+        Se que es muy nerd de mi parte jajaj vez los corazones flotantes? asi  senti cuando me di cuenta que sentia cosas por ti .
+    </p>
+
+    <button onclick="mostrarMensaje()">Haz clic aquí 💌</button>
+
+    <div class="mensaje" id="mensaje">
+        Me encanta pasar tiempo contigo ❤️
+    </div>
+
+    <script>
+        function mostrarMensaje() {
+            document.getElementById("mensaje").style.display = "block";
+        }
+
+        function crearCorazon() {
+            const corazon = document.createElement("div");
+            corazon.classList.add("corazon");
+            corazon.innerHTML = "❤️";
+
+            corazon.style.left = Math.random() * 100 + "vw";
+            corazon.style.fontSize = Math.random() * 20 + 10 + "px";
+
+            document.body.appendChild(corazon);
+
+            setTimeout(() => {
+                corazon.remove();
+            }, 5000);
+        }
+
+        setInterval(crearCorazon, 300);
+    </script>
+
+</body>
+
+</html>
